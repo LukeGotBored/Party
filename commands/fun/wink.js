@@ -1,0 +1,55 @@
+const Discord = require("discord.js");
+const fetch = require("node-fetch");
+
+module.exports = {
+  name: "wink",
+  description: "Wink at someone!",
+  aliases: [],
+  guildOnly: true,
+
+  async execute(message, args) {
+    const tick = message.client.emojis.get("655807079784644608");
+    const cross = message.client.emojis.get("655807081240330245");
+    try {
+      const response = await fetch(
+        "https://some-random-api.ml/animu/wink"
+      ).then(response => response.json());
+
+      var author = message.author
+      const user = message.client.util.getUser(message, args.join(" "));
+      const server = message.client;
+
+       if(author.username == user.username){
+             author = "Party"
+              } else {
+             author = author.username
+       }
+      
+   
+        const avatarEmbed = new Discord.RichEmbed()
+          .setColor("0xfeb637")
+          .setTitle(
+            "😉 " + author + " winked at " + user.username + "!"
+          )
+          .setImage(response.link)
+          .setFooter("Party! x some-random-api", "https://i.imgur.com/B6QKBgC.png");
+        message.channel.send(avatarEmbed);
+      
+      
+      
+      
+    } catch (error) {
+      const errorEmbed = new Discord.RichEmbed()
+        .setColor("#ff0000")
+        .setTitle(cross +   " Uh Oh! there was an error!")
+        .addField(
+          "please contact the developer",
+          "Join the support server [Here](https://discord.gg/7Wx3jVD)"
+        )
+        .setDescription(error)
+        .setFooter("Party!", "https://i.imgur.com/B6QKBgC.png")
+        .setTimestamp();
+      message.reply(errorEmbed);
+    }
+  }
+};

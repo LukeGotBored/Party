@@ -1,0 +1,47 @@
+{
+  "name": "party-dev",
+  "version": "0.0.1",
+  "description": "i'm a bot!.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dblapi.js": "^2.4.0",
+    "discord.js": "^11.6.1",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.0",
+    "node-opus": "^0.3.3",
+    "ffmpeg": "^0.0.4",
+    "ytdl-core": "^2.1.5",
+    "opusscript": "^0.0.7",
+    "util": "^0.12.3",
+    "random-case": "^1.0.0",
+    "unofficial-node-eclyssia": "^2.1.0",
+    "windows-build-tools": "^5.2.2",
+    "cheerio": "^0.22.0",
+    "canvas-filters": "^1.0.1",
+    "twemoji-parser": "^13.0.0",
+    "unirest": "^0.6.0",
+    "is-image": "^3.0.0",
+    "brawlstars.js": "^1.0.6",
+    "cr.js": "^0.2.2",
+    "clash-of-clans-api": "^0.6.3",
+    "striptags": "^3.1.1",
+    "node-gyp": "^6.1.0",
+    "canvas": "^2.6.1"
+  },
+  "engines": {
+    "node": "12.x"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/party-dev"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch",
+    "express",
+    "discord"
+  ]
+}
