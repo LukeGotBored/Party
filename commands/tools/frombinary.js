@@ -2,10 +2,10 @@ const Discord = require("discord.js");
 const fetch = require("node-fetch");
 
 module.exports = {
-  name: "tobinary",
-  description: "convert stuff to binary",
+  name: "frombinary",
+  description: "convert binary to stuff",
   guildOnly: false,
-  aliases: ["convert", "01", "10", "base2"],
+  aliases: ["totext"],
 
   execute(message, args) {
     const tick = message.client.emojis.get("655807079784644608");
@@ -21,9 +21,11 @@ module.exports = {
       return message.channel.send(cross + " the message is too long! (max 100 chars)")
     }
     
-    for (var i = 0; i < joinedargs.length; i++) {
-      binary += joinedargs[i].charCodeAt(0).toString(2) + " ";
-    }
+  
+      binary = joinedargs.split(' ') //Split string in array of binary chars
+                   .map(bin => String.fromCharCode(parseInt(bin, 2))) //Map every binary char to real char
+                      .join('');
+    
      
   
     const flipemb = new Discord.RichEmbed()
