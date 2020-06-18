@@ -11,15 +11,30 @@ module.exports = {
   aliases: ["usercard", "getcard", "userscard"],
 
   async execute(message, args) {
-    
-    const trim = (str, max) =>
-      str.length > max ? `${str.slice(0, max - 3)}...`.trim() : str.trim();
-    
-    
+        
     const user = message.client.util.getUser(message, args.join(" "));
     const background = await Canvas.loadImage(
       "https://cdn.glitch.com/ef1e949e-b46b-494b-b247-f5204ca69a84%2Fparty_stats.png?v=1582880129170"
     );
+    
+    const trim = (str, max) =>
+      str.length > max ? `${str.slice(0, max - 3)}...`.trim() : str.trim();
+        
+    var cpresence = "Error"  
+    
+    if(!user.presence.game){
+      cpresence = "Nothing!"
+    }
+    
+    else if(user.presence.game.state){
+      cpresence = user.presence.game.state
+    }
+    
+    else{
+      cpresence = user.presence.game.name
+    }
+    
+    
     const avatar = await Canvas.loadImage(user.displayAvatarURL);
     const canvas = Canvas.createCanvas(background.width, background.height);
     const ctx = canvas.getContext("2d");
@@ -51,7 +66,7 @@ module.exports = {
     let formattedPresence = presence === "dnd"? "do not disturb" : presence;
     formattedPresence = formattedPresence[0].toUpperCase() + formattedPresence.slice(1)
     ctx.fillText(formattedPresence || "None", 785, 395);
-    ctx.fillText(user.presence.game || "Nothing!", 785, 615);
+    ctx.fillText(trim(cpresence, 25), 785, 615);
 
     
     // User creation date
