@@ -44,7 +44,7 @@ for (const category of commandCategories) {
 
 client.once("ready", () => {
   console.log("Updated! " + time);
-  client.user.setActivity("p!help | 3.3!");
+  client.user.setActivity("p!help | " + message.client.guilds.size + " Guilds!");
   client.user.setStatus("idle");
 });
 
