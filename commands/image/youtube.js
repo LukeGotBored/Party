@@ -19,7 +19,7 @@ module.exports = {
     }
   
     var gencomment =
-      "https://some-random-api.ml/beta/youtube-comment?username=" +
+      "https://some-random-api.ml/canvas/youtube-comment?username=" +
       user.username.trim().slice(0, 25) +
       "&comment=" +
       encodeURIComponent(joinargs) +
