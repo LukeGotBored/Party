@@ -32,7 +32,7 @@ module.exports = {
       return;
     }
     
-    message.channel.send("⚠ Beta", {
+    message.channel.send({
       files: [{ attachment: gencomment, name: "comment.png" }]
     });
   }
