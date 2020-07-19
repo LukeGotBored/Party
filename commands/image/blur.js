@@ -7,6 +7,7 @@ module.exports = {
   name: "blur",
   description: "give me my glasses back!",
   guildOnly: false,
+  cooldown: 5,
   aliases: [],
 
   async execute(message, args) {

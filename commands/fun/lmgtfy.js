@@ -11,6 +11,9 @@ module.exports = {
     const tick = message.client.emojis.get("655807079784644608");
     const cross = message.client.emojis.get("655807081240330245");
     const joinedArgs = args.join(" ");
+    if (!message.guild.me.hasPermission('MANAGE_WEBHOOKS')){
+      return message.channel.send(cross +" i can't look that up for you without the **Manage Webhooks** permission!")
+    }
     if (!joinedArgs)
       return message.channel.send(
         cross + " you need to provide something to google!"

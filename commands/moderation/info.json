@@ -1,5 +1,8 @@
 {
   "description": "**BAN 'EM ALL**",
-  "emoji": "🔨"
+  "emoji": "🔨",
+  "aliases": [
+    "mod"
+  ]
 }
 

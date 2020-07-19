@@ -7,6 +7,7 @@ module.exports = {
   name: "trash",
   description: "that really looks like... nevermind!",
   guildOnly: false,
+  cooldown: 5,
   aliases: ["glasses", "spiderman"],
 
   async execute(message, args) {

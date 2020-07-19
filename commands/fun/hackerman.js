@@ -16,7 +16,8 @@ module.exports = {
         response => response.json()
     );
     
-    if (!message.member.guild.me.hasPermission("MANAGE_WEBHOOKS")){
+    
+    if (!message.guild.me.hasPermission('MANAGE_WEBHOOKS')){
       return message.channel.send(cross +" the firewall of permissions doesn't allow me to enter the mainframe! I need the **Manage Webhooks** permission to work!")
     }
     

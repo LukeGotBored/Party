@@ -20,7 +20,7 @@ module.exports = {
       return message.channel.send(cross + "You don't have the **Kick Members** permission!")
     }
     
-    if (!message.member.guild.me.hasPermission("KICK_MEMBERS")){
+    if (!message.guild.me.hasPermission('KICK_MEMBERS')){
       return message.channel.send(cross + "I don't have the **Kick Members** permission!")
     }
     
@@ -29,7 +29,7 @@ module.exports = {
         if (!message.guild.members.get(args.slice(0, 1).join(" ")))
           throw new Error(cross + " I Couldn't find that user!");
           user = message.guild.members.get(args.slice(0, 1).join(" "));
-          //  user = user.members;
+          
         
       } catch (error) {
         console.log(error)
@@ -37,13 +37,13 @@ module.exports = {
         
       }
     }
-    
     if (user.id === message.author.id) return message.channel.send(cross + ' Hold on did you just try to kick yourself?');
     if (!message.guild.member(user).kickable) return message.reply(cross + ' I can\'t kick a moderator!');
 
     if (!banReason) {
       banReason = "Unspecified";
     }
+
     const banEmb = new Discord.RichEmbed()
         .setColor("0xfeb637")
         .setAuthor("Kicked by " + message.author.username , message.author.displayAvatarURL)
@@ -53,7 +53,7 @@ module.exports = {
         .setTimestamp()
         .setFooter("Party!", "https://i.imgur.com/B6QKBgC.png");
 
-  
+        
 
   
          await user.kick(banReason)

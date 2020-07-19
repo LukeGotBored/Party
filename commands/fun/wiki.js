@@ -6,7 +6,7 @@ const striptags = require('striptags');
 
 module.exports = {
   name: "wiki",
-  description: "basically wikipedia but in a discord bot",
+  description: "Get an explanation about literally anything",
   guildOnly: false,
   aliases: [
     "wikipedia",

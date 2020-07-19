@@ -7,7 +7,7 @@ module.exports = {
   aliases: ["userstats", "userinfo", "user-info", "profile", "us"],
   guildOnly: false,
 
-  execute(message, args) {
+  async execute(message, args) {
     var mentionedUser = message.mentions.users.first();
     const user = message.client.util.getUser(message, args.join(" "));
     const server = message.client;
@@ -27,18 +27,30 @@ module.exports = {
       username += " <:bot:686533672119042056>"
     }
     
+    var presence = "Error"  
     
+    if(!user.presence.game){
+      presence = "Nothing!"
+    }
     
+    else if(user.presence.game.state){
+      presence = user.presence.game.state
+    }
+    
+    else{
+      presence = user.presence.game.name
+    }
+    
+ 
       const UserEmbed = new Discord.RichEmbed()
 
         .setColor(0xfeb637)
         .setTitle("Here are the stats for " + username)
         .setThumbnail(user.displayAvatarURL)
         .addField("📅 Account Created: ", `${creationDay} ${creationTime} GMT+0`, true)
-        //.addField("📅 Joined Server: ", user.joinedAt, true)
         .addField("#️⃣ Tag: ", user.tag, true)
         .addField("🆔 ID:", user.id, true)
-        .addField("🎮 Activity: ", user.presence.game ? user.presence.game.name : `Nothing!`, true)
+        .addField("🎮 Activity: ", presence, true)
         .setFooter("Party!", "https://i.imgur.com/B6QKBgC.png")
         .setTimestamp();
 

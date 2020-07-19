@@ -18,8 +18,11 @@ module.exports = {
       .addField("get started with p!help", "** **")
       .setColor(0xfeb637)
       .setThumbnail(message.client.user.avatarURL)
-      .addField("🏓 Ping:", Math.round(message.client.ping) + " ms!", true)
       .addField("🌐 Servers: ", message.client.guilds.size + " servers!", true)
+      .addField("<:channel:705332915499827230> Channels: ", message.client.channels.size, true)
+      .addField("👥 Members: ", message.client.users.size, true)
+      .addField("<:djs:705128010268934304> Library:", "d.js 11.6.4", true)
+      .addField("🏓 Ping:", Math.round(message.client.ping) + " ms!", true)
       .addField("🕙 Uptime: ", (message.client.uptime/1000).toFixed(1) + "s", true)
       .setTimestamp()
       .setFooter("Party!", "https://i.imgur.com/B6QKBgC.png");

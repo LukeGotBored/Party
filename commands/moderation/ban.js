@@ -16,11 +16,7 @@ module.exports = {
       return message.channel.send(cross + "You don't have the **Ban Members** permission!")
     }
     
-    if (!message.member.hasPermission("BAN_MEMBERS")){
-      return message.channel.send(cross + "You don't have the **Ban Members** permission!")
-    }
-    
-    if (!message.member.guild.me.hasPermission("BAN_MEMBERS")){
+    if (message.guild.me.hasPermission('BAN_MEMBERS', false, false)){
       return message.channel.send(cross + "I don't have the **Ban Members** permission!")
     }
     
@@ -42,6 +38,7 @@ module.exports = {
     if (!banReason) {
       banReason = "Unspecified";
     }
+    
     const banEmb = new Discord.RichEmbed()
         .setColor("0xfeb637")
         .setAuthor("Banned by " + message.author.username , message.author.displayAvatarURL)

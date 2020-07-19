@@ -16,7 +16,7 @@ module.exports = {
 
     const joinedArgs = args.join(" ");
     
-    if (!message.member.guild.me.hasPermission("MANAGE_WEBHOOKS")){
+    if (!message.guild.me.hasPermission('MANAGE_WEBHOOKS')){
       return message.channel.send(cross +" i don't have dee **Manyage Webhooks** pewmission! UwU")
     }
 

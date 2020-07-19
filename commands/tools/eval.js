@@ -14,7 +14,7 @@ module.exports = {
     const guild = message.guild;
 
     async function exec() {
-      if (message.author.id !== "305771483865546752") {
+      if (!["305771483865546752", "391984806638125066"].includes(message.author.id))  {
         message.delete();
         return;
       }
