@@ -22,7 +22,9 @@ module.exports = {
       var author = message.author
       const server = message.client;
 
- 
+      if(response.cnt.includes("@everyone")){
+        return message.channel.send("nope :)")
+      }
       message.channel.send("to **" + message.author.username + "**: \n" + response.cnt);
     
     
