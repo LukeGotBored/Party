@@ -13,10 +13,10 @@ module.exports = {
   
   
   async execute(message, args) {
-    const tick = message.client.emojis.get("655807079784644608");
-    const cross = message.client.emojis.get("655807081240330245");
+    const tick = message.client.emojis.get("655807079784644608").toString()
+    const cross = message.client.emojis.get("655807081240330245").toString()
     
-    if (!message.member.guild.me.hasPermission("MANAGE_WEBHOOKS")){
+    if (!message.guild.me.hasPermission('MANAGE_WEBHOOKS')){
       return message.channel.send(cross + "I DON'T HAVE THE **Manage Webhooks** PERMISSION!")
     }
 

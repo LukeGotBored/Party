@@ -8,14 +8,14 @@ module.exports = {
   aliases: ["birb", "bird", "getbird", "getbirb", "getbird", "getbirb"],
 
   async execute(message, args) {
-    const tick = message.client.emojis.get("655807079784644608");
-    const cross = message.client.emojis.get("655807081240330245");
+    const tick = message.client.emojis.get("655807079784644608").toString()
+    const cross = message.client.emojis.get("655807081240330245").toString()
     try {
       const { link } = await fetch("https://some-random-api.ml/img/birb").then(
         response => response.json()
       );
 
-      const birbemb = new Discord.RichEmbed()
+      const birbemb = new Discord.MessageEmbed()
         .setTitle("here's a birb 🐦")
         .setColor(0xfeb637)
         .setImage(link)
@@ -26,7 +26,7 @@ module.exports = {
         );
       message.channel.send(birbemb);
     } catch (error) {
-      const errorEmbed = new Discord.RichEmbed()
+      const errorEmbed = new Discord.MessageEmbed()
         .setColor("#ff0000")
         .setTitle(cross + " Uh Oh! there was an error!")
         .addField(

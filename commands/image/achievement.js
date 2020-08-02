@@ -17,7 +17,7 @@ module.exports = {
     // if no args provided  
     if(!joinedargs){
       
-    const flipemb = new Discord.RichEmbed()
+    const flipemb = new Discord.MessageEmbed()
       .setColor("0xfeb637")
       .setTitle("Achievement Get!")
       .setDescription("say what you want to achieve!a\n(_p!achievement learning stuff!_)")
@@ -48,3 +48,4 @@ module.exports = {
     message.channel.send(flipemb);
   }
 };
+  

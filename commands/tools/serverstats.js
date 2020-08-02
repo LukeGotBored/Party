@@ -8,7 +8,7 @@ module.exports = {
 
   execute(message, args) {
     const guild = message.guild
-    const ServerEmbed = new Discord.RichEmbed()
+    const ServerEmbed = new Discord.MessageEmbed()
       .setColor(0xfeb637)
       .setTitle("Here's the stats for " + guild.name)
       .addField("👥  member count: ", "**" + guild.memberCount + "**" + " members!")

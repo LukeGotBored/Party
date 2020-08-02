@@ -2,29 +2,38 @@ const Discord = require("discord.js");
 const fetch = require("node-fetch");
 
 module.exports = {
-  name: "neko",
-  description: "Get a random neko-girl pic",
+  name: "qr",
+  description: "generate a qrcode!",
   guildOnly: false,
-  aliases: ["getneko", "nekopic", "getneko"],
+  aliases: ["qrcode"],
 
   async execute(message, args) {
     const tick = message.client.emojis.get("655807079784644608").toString()
     const cross = message.client.emojis.get("655807081240330245").toString()
+      
+    
+    if(!args.join(" ")){
+        return message.channel.send(cross + " send me a picture or some text!")
+      }
+
+    
     try {
-      const response = await fetch("https://nekos.life/api/v2/img/neko").then(
-        response => response.json()
-      );
-      console.log(response.message);
-      const dogemb = new Discord.MessageEmbed()
-        .setColor("0xfeb637")
-        .setTitle("Here's a random neko! OwO")
-        .setImage(response.url)
+ 
+      
+      
+      var qrcode = "https://api.qrserver.com/v1/create-qr-code/?data=" + encodeURIComponent(args.join(" ")) +  "&size=512x512&qzone=3&format=png&ec"
+
+      const catemb = new Discord.MessageEmbed()
+        .setAuthor(message.author.username, message.author.displayAvatarURL)
+        .setColor(0xfeb637)
+        .setImage(qrcode)
         .setTimestamp()
-        .setFooter(
-          "Party! x nekos.life",
-          "https://i.imgur.com/B6QKBgC.png"
-        );
-      message.channel.send(dogemb);
+        .setFooter("Party!", "https://i.imgur.com/B6QKBgC.png");
+      message.channel.send(catemb);
+      
+      
+      
+      
     } catch (error) {
       const errorEmbed = new Discord.MessageEmbed()
         .setColor("#ff0000")

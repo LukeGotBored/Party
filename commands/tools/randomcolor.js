@@ -24,7 +24,7 @@ module.exports = {
 
     const attachment = new Discord.Attachment(canvas.toBuffer(), "color.png");
     
-    const coloremb = new Discord.RichEmbed()
+    const coloremb = new Discord.MessageEmbed()
       .setColor(color)
       .setTitle("Here's your random color!")
       .setDescription(color)

@@ -8,8 +8,8 @@ module.exports = {
   aliases: ["totext"],
 
   execute(message, args) {
-    const tick = message.client.emojis.get("655807079784644608");
-    const cross = message.client.emojis.get("655807081240330245");
+    const tick = message.client.emojis.get("655807079784644608").toString()
+    const cross = message.client.emojis.get("655807081240330245").toString()
     var joinedargs = args.join(" ")
     var binary = ""
     
@@ -28,7 +28,7 @@ module.exports = {
     
      
   
-    const flipemb = new Discord.RichEmbed()
+    const flipemb = new Discord.MessageEmbed()
       .setColor("0xfeb637")
       .setTitle("Beep Boop")
       .addField("📥 Input:", joinedargs)
@@ -38,3 +38,4 @@ module.exports = {
     message.channel.send(flipemb);
   }
 };
+  

@@ -1,18 +1,22 @@
 const Discord = require("discord.js");
 
 module.exports = {
-  name: "invite",
-  description: "want to invite party? here you go!",
+  name: "announcement",
+  description: "{str_description_ann}",
   guildOnly: false,
+  developerOnly: true,
+  aliases: ["announce"],
 
   execute(message, args) {
+    
+    var finalMessage = args.join(" ")
+    finalMessage = finalMessage.replace("_news", "<:news:658522693058166804>")
+    message.delete()
     var server = message.guild;
     const debugEmbed = new Discord.MessageEmbed()
-      .setThumbnail("https://i.imgur.com/t1P6d5P.gif")
       .setColor("0xfeb637")
-      .setTitle("Invite Party to your server!")
-      .addField("You can invite me here:" , "https://getparty.ml")
-      .addField("Want to go beta?", "https://getparty.ml/beta")
+      .setTitle("Announcement!")
+      .setDescription(finalMessage)
       .setFooter("Party!", "https://i.imgur.com/B6QKBgC.png")
       .setTimestamp();
     message.channel.send(debugEmbed);

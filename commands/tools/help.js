@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const { promisify } = require("util");
 const fs = require("fs");
 
+
 module.exports = {
   name: "commands",
   description: "the full list of commands",
@@ -23,7 +24,7 @@ module.exports = {
     });
       
     if (args.length === 0) {
-      let helpEmbed = new Discord.RichEmbed()
+      let helpEmbed = new Discord.MessageEmbed()
         .setThumbnail(
           "https://cdn.discordapp.com/avatars/527625435128004628/ddc9359cffc10c8d150d5d738a3cc336.png?size=2048"
         )
@@ -56,7 +57,7 @@ module.exports = {
           .filter(file => file.endsWith(".js"))
           .map(file => file.slice(0, -3))
         const joinedCommands = `\`${commands.join("`, `")}\``
-        const helpEmbed = new Discord.RichEmbed()
+        const helpEmbed = new Discord.MessageEmbed()
         .setThumbnail(
           "https://cdn.discordapp.com/avatars/527625435128004628/ddc9359cffc10c8d150d5d738a3cc336.png?size=2048"
         )
@@ -79,7 +80,7 @@ module.exports = {
         command.nsfwOnly = false
       
       if (args[0].toLowerCase() === command.name || command.aliases.includes(args[0].toLowerCase())) {
-        const helpEmbed = new Discord.RichEmbed()
+        const helpEmbed = new Discord.MessageEmbed()
         .setThumbnail(
           "https://cdn.discordapp.com/avatars/527625435128004628/ddc9359cffc10c8d150d5d738a3cc336.png?size=2048"
         )

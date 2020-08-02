@@ -39,7 +39,7 @@ module.exports = {
       progress += chars[0].repeat(10 - progress.length); // fill the bar with blank chars
     }
 
-    const yearEmbed = new Discord.RichEmbed()
+    const yearEmbed = new Discord.MessageEmbed()
       .setColor("0xfeb637")
       .setTitle("Year Progress")
       .addField("Percentage:", percentage + "%", true)

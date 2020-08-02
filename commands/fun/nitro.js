@@ -8,9 +8,9 @@ module.exports = {
   aliases: ["freenitro", "getnitro"],
 
   execute(message, args) {
-    const tick = message.client.emojis.get("655807079784644608");
-    const cross = message.client.emojis.get("655807081240330245");
-    const flipemb = new Discord.RichEmbed()
+    const tick = message.client.emojis.get("655807079784644608").toString()
+    const cross = message.client.emojis.get("655807081240330245").toString()
+    const flipemb = new Discord.MessageEmbed()
       .setColor("0xfeb637")
       .setTitle("Free Nitro")
       .setDescription("Click this link to get [free nitro](https://www.youtube.com/watch?v=dQw4w9WgXcQ)")

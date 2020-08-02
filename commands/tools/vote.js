@@ -8,7 +8,7 @@ module.exports = {
   
 
   execute(message, args) {
-    const voteemb = new Discord.RichEmbed()
+    const voteemb = new Discord.MessageEmbed()
       .setTitle("Support Party's Development!")
       .addField("Vote!", "** **")
       .addField(

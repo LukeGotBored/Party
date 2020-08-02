@@ -9,8 +9,8 @@ module.exports = {
   guildOnly: true,
 
   async execute(message, args) {
-    const tick = message.client.emojis.get("655807079784644608");
-    const cross = message.client.emojis.get("655807081240330245");
+    const tick = message.client.emojis.get("655807079784644608").toString()
+    const cross = message.client.emojis.get("655807081240330245").toString()
     try {
       const response = await fetch(
         "https://mywaifulist.moe/random"
@@ -26,7 +26,7 @@ module.exports = {
       let description = getMeta("og:description")
       if (description.length === 150) description += "..."
       const url = getMeta("og:url")
-      const embed = new Discord.RichEmbed()
+      const embed = new Discord.MessageEmbed()
         .setColor("0xfeb637")
         .setTitle(name)
         .setURL(url)
@@ -35,7 +35,7 @@ module.exports = {
         .setFooter("Party! x MyWaifuList", "https://i.imgur.com/B6QKBgC.png");
       message.channel.send(embed);
     } catch (error) {
-      const errorEmbed = new Discord.RichEmbed()
+      const errorEmbed = new Discord.MessageEmbed()
         .setColor("#ff0000")
         .setTitle(cross + " Uh Oh! there was an error!")
         .addField(

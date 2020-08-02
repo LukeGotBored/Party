@@ -96,7 +96,7 @@ module.exports = {
     );
 
     
-    const avatarEmbed = new Discord.RichEmbed()
+    const avatarEmbed = new Discord.MessageEmbed()
         .setColor("0xfeb637")
         .setImage("attachment://" + user.username + "_profile.png")
         .setTitle(user.username+ "'s Card!" )
