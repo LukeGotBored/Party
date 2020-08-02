@@ -8,15 +8,15 @@ module.exports = {
   aliases: ["owoify", "furrify", "furry", "owotranslate", "uwu"],
 
   async execute(message, args) {
-    const tick = message.client.emojis.get("655807079784644608");
-    const cross = message.client.emojis.get("655807081240330245");
+    const tick = message.client.emojis.get("655807079784644608").toString()
+    const cross = message.client.emojis.get("655807081240330245").toString()
     
 
 
 
     const joinedArgs = args.join(" ");
     
-    if (!message.member.guild.me.hasPermission("MANAGE_WEBHOOKS")){
+    if (!message.guild.me.hasPermission('MANAGE_WEBHOOKS')){
       return message.channel.send(cross +" i don't have dee **Manyage Webhooks** pewmission! UwU")
     }
 

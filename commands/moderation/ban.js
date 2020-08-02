@@ -7,8 +7,8 @@ module.exports = {
   aliases: ["banhammer", "destroy", "disintegrate"],
 
   async execute(message, args) {
-    const tick = message.client.emojis.get("655807079784644608");
-    const cross = message.client.emojis.get("655807081240330245");
+    const tick = message.client.emojis.get("655807079784644608").toString()
+    const cross = message.client.emojis.get("655807081240330245").toString()
 
     var user = message.mentions.users.first(); // returns the user object if an user mention exists
     var banReason = args.slice(1).join(" "); // Reason of the ban (Everything behind the mention)
@@ -16,11 +16,7 @@ module.exports = {
       return message.channel.send(cross + "You don't have the **Ban Members** permission!")
     }
     
-    if (!message.member.hasPermission("BAN_MEMBERS")){
-      return message.channel.send(cross + "You don't have the **Ban Members** permission!")
-    }
-    
-    if (!message.member.guild.me.hasPermission("BAN_MEMBERS")){
+    if (message.guild.me.hasPermission('BAN_MEMBERS', false, false)){
       return message.channel.send(cross + "I don't have the **Ban Members** permission!")
     }
     
@@ -42,7 +38,8 @@ module.exports = {
     if (!banReason) {
       banReason = "Unspecified";
     }
-    const banEmb = new Discord.RichEmbed()
+    
+    const banEmb = new Discord.MessageEmbed()
         .setColor("0xfeb637")
         .setAuthor("Banned by " + message.author.username , message.author.displayAvatarURL)
         .setTitle(user.tag + " has been banned!")

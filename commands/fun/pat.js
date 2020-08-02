@@ -8,8 +8,8 @@ module.exports = {
   guildOnly: true,
 
   async execute(message, args) {
-    const tick = message.client.emojis.get("655807079784644608");
-    const cross = message.client.emojis.get("655807081240330245");
+    const tick = message.client.emojis.get("655807079784644608").toString()
+    const cross = message.client.emojis.get("655807081240330245").toString()
     try {
       const response = await fetch("https://some-random-api.ml/animu/pat")
         .then(res => res.json())
@@ -25,7 +25,7 @@ module.exports = {
        }
       
 
-      const avatarEmbed = new Discord.RichEmbed()
+      const avatarEmbed = new Discord.MessageEmbed()
           .setColor("0xfeb637")
           .setTitle(
             "❤️ " + author + " patted " + user.username + "!"
@@ -37,7 +37,7 @@ module.exports = {
     
 
     } catch (error) {
-      const errorEmbed = new Discord.RichEmbed()
+      const errorEmbed = new Discord.MessageEmbed()
         .setColor("#ff0000")
         .setTitle(cross + " Uh Oh! there was an error!")
         .addField(

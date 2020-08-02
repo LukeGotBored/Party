@@ -10,9 +10,9 @@ module.exports = {
   aliases: ["memes", "getmeme", "lol"],
 
   async execute(message, args) {
-    const tick = message.client.emojis.get("655807079784644608");
-    const cross = message.client.emojis.get("655807081240330245");
-    const loadEmbed = new Discord.RichEmbed()
+    const tick = message.client.emojis.get("655807079784644608").toString()
+    const cross = message.client.emojis.get("655807081240330245").toString()
+    const loadEmbed = new Discord.MessageEmbed()
       .setColor("0xfeb637")
       .setTitle("<a:p_loading:657238016481296403> Loading!")
       .setFooter("Party! x Reddit", "https://i.imgur.com/B6QKBgC.png");
@@ -26,7 +26,7 @@ module.exports = {
       if (!meme.length) return message.channel.send('Something went wrong. Try again');
 
 
-        const memeEmbed = new Discord.RichEmbed()
+        const memeEmbed = new Discord.MessageEmbed()
           .setColor("0xfeb637")
           .setURL(`https://www.reddit.com${meme[randommeme].data.permalink}`)
           .setTitle(meme[randommeme].data.title)

@@ -9,14 +9,15 @@ module.exports = {
   aliases: [],
 
   async execute(message, args) {
-    const tick = message.client.emojis.get("655807079784644608");
-    const cross = message.client.emojis.get("655807081240330245");
+    const tick = message.client.emojis.get("655807079784644608").toString();
+    const cross = message.client.emojis.get("655807081240330245").toString();
     
     const response = await fetch("https://hackerman.wtf/api").then(
         response => response.json()
     );
     
-    if (!message.member.guild.me.hasPermission("MANAGE_WEBHOOKS")){
+    
+    if (!message.guild.me.hasPermission('MANAGE_WEBHOOKS')){
       return message.channel.send(cross +" the firewall of permissions doesn't allow me to enter the mainframe! I need the **Manage Webhooks** permission to work!")
     }
     

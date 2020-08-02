@@ -42,7 +42,7 @@ module.exports = {
     }
     
  
-      const UserEmbed = new Discord.RichEmbed()
+      const UserEmbed = new Discord.MessageEmbed()
 
         .setColor(0xfeb637)
         .setTitle("Here are the stats for " + username)

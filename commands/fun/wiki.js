@@ -6,7 +6,7 @@ const striptags = require('striptags');
 
 module.exports = {
   name: "wiki",
-  description: "basically wikipedia but in a discord bot",
+  description: "Get an explanation about literally anything",
   guildOnly: false,
   aliases: [
     "wikipedia",
@@ -16,8 +16,8 @@ module.exports = {
   ],
 
   async execute(message, args) {
-    const tick = message.client.emojis.get("655807079784644608");
-    const cross = message.client.emojis.get("655807081240330245");
+    const tick = message.client.emojis.get("655807079784644608").toString()
+    const cross = message.client.emojis.get("655807081240330245").toString()
     const trim = (str, max) =>
       str.length > max ? `${str.slice(0, max - 3)}...`.trim() : str.trim();
 
@@ -42,7 +42,7 @@ module.exports = {
         throw new Error("")
       const snippet = Object.values(infoBody.query.pages)[0].extract
       
-      const embed = new Discord.RichEmbed()
+      const embed = new Discord.MessageEmbed()
         .setURL(articleURL)
         .setTitle(article.title)
         .setDescription(trim(striptags(snippet), 200) + ` [Read more](${articleURL})`)
@@ -53,7 +53,7 @@ module.exports = {
 
       message.channel.send(embed);
     } catch (error) {
-      const errorEmbed = new Discord.RichEmbed()
+      const errorEmbed = new Discord.MessageEmbed()
         .setColor("#ff0000")
         .setTitle(cross + " Uh Oh! there was an error!")
         .addField(

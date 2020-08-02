@@ -8,8 +8,8 @@ module.exports = {
   aliases: ["future", "predict", "8b"],
 
   execute(message, args) {
-    const tick = message.client.emojis.get("655807079784644608");
-    const cross = message.client.emojis.get("655807081240330245");
+    const tick = message.client.emojis.cache.get("655807079784644608").toString()
+    const cross = message.client.emojis.cache.get("655807081240330245").toString()
     var prediction = "none";
     var fortunes = [
       "As far as I can see, yes.",
@@ -36,9 +36,9 @@ module.exports = {
     let predemb;
 
     if (!args.length) {
-      predemb = new Discord.RichEmbed()
+      predemb = new Discord.MessageEmbed()
         .setColor("0xff0000")
-        .setTitle(cross + " You haven't specified the question!")
+        .setTitle(cross + " You haven't specified the question!") // yeah that was it lmao
         .addField(
           "You are supposed to use it like this: ",
           "*p!8ball will I ever be the best cook ever?*"
@@ -46,7 +46,7 @@ module.exports = {
         .setTimestamp()
         .setFooter("Party!", "https://i.imgur.com/B6QKBgC.png");
     } else {
-      predemb = new Discord.RichEmbed()
+      predemb = new Discord.MessageEmbed()
         .setColor("0xfeb637")
         .setTitle(":8ball: Here's the prediction!")
         .addField(":sparkles: the ball says...", prediction)

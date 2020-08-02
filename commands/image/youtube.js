@@ -8,8 +8,8 @@ module.exports = {
   guildOnly: false,
 
   execute(message, args) {
-    const tick = message.client.emojis.get("655807079784644608");
-    const cross = message.client.emojis.get("655807081240330245");
+    const tick = message.client.emojis.get("655807079784644608").toString()
+    const cross = message.client.emojis.get("655807081240330245").toString()
     const user = message.author
     var joinargs = args.join(" ");
     
@@ -19,7 +19,7 @@ module.exports = {
     }
   
     var gencomment =
-      "https://some-random-api.ml/canvas/youtube-comment?username=" +
+      "https://some-random-api.ml/beta/youtube-comment?username=" +
       user.username.trim().slice(0, 25) +
       "&comment=" +
       encodeURIComponent(joinargs) +
@@ -32,7 +32,7 @@ module.exports = {
       return;
     }
     
-    message.channel.send({
+    message.channel.send("⚠ Beta", {
       files: [{ attachment: gencomment, name: "comment.png" }]
     });
   }

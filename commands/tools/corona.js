@@ -61,7 +61,7 @@ module.exports = {
 
 
     
-    const coronaEmbed = new Discord.RichEmbed()
+    const coronaEmbed = new Discord.MessageEmbed()
       .setThumbnail("https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/236/hospital_1f3e5.png")
       .setColor("0xfeb637")
       .setTitle("Coronavirus Stats")

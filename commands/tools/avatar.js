@@ -12,7 +12,7 @@ module.exports = {
 
     
     
-      const avatarEmbed = new Discord.RichEmbed()
+      const avatarEmbed = new Discord.MessageEmbed()
         .setColor("0xfeb637")
         .setTitle(user.username + "'s Avatar")
         .setImage(user.displayAvatarURL)

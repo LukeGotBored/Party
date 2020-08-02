@@ -7,16 +7,12 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "discord.js": "^12.2.0",
     "dblapi.js": "^2.4.0",
-    "discord.js": "^11.6.1",
     "express": "^4.17.1",
     "node-fetch": "^2.6.0",
-    "ffmpeg": "^0.0.4",
-    "ytdl-core": "^3.1.1",
-    "opusscript": "^0.0.7",
     "util": "^0.12.3",
     "random-case": "^1.0.0",
-    "unofficial-node-eclyssia": "^2.1.0",
     "cheerio": "^0.22.0",
     "canvas-filters": "^1.0.1",
     "twemoji-parser": "^13.0.0",
@@ -24,10 +20,11 @@
     "is-image": "^3.0.0",
     "brawlstars.js": "^1.0.6",
     "cr.js": "^0.2.2",
-    "clash-of-clans-api": "^0.6.3",
+    "mal-scraper": "^2.7.1",
     "striptags": "^3.1.1",
-    "node-gyp": "^7.0.0",
-    "canvas": "^2.6.1"
+    "@discordjs/opus": "^0.3.2",
+    "canvas": "^2.6.1",
+    "ytdl-core": "^3.1.3"
   },
   "engines": {
     "node": "12.x"

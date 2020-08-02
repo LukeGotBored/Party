@@ -11,8 +11,8 @@ module.exports = {
   async execute(message, args) {
     
     var name = args.join(" ");
-    const tick = message.client.emojis.get("655807079784644608");
-    const cross = message.client.emojis.get("655807081240330245");
+    const tick = message.client.emojis.get("655807079784644608").toString()
+    const cross = message.client.emojis.get("655807081240330245").toString()
     
     
     

@@ -7,11 +7,12 @@ module.exports = {
   name: "trash",
   description: "that really looks like... nevermind!",
   guildOnly: false,
+  cooldown: 5,
   aliases: ["glasses", "spiderman"],
 
   async execute(message, args) {
     const user = message.client.util.getUser(message, args.join(" "));
-    const loadEmbed = new Discord.RichEmbed()
+    const loadEmbed = new Discord.MessageEmbed()
       .setColor("0xfeb637")
       .setTitle("<a:p_loading:657238016481296403> Loading!")
       .setFooter("Party!", "https://i.imgur.com/B6QKBgC.png");

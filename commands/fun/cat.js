@@ -8,14 +8,14 @@ module.exports = {
   aliases: ["cat", "getcat", "meow"],
 
   async execute(message, args) {
-    const tick = message.client.emojis.get("655807079784644608");
-    const cross = message.client.emojis.get("655807081240330245");
+    const tick = message.client.emojis.get("655807079784644608").toString()
+    const cross = message.client.emojis.get("655807081240330245").toString()
     try {
       const { link } = await fetch("https://some-random-api.ml/img/cat").then(
         response => response.json()
       );
 
-      const catemb = new Discord.RichEmbed()
+      const catemb = new Discord.MessageEmbed()
         .setTitle("Meow :cat:")
         .setColor(0xfeb637)
         .setImage(link)
@@ -23,7 +23,7 @@ module.exports = {
         .setFooter("Party! x some-random-api.ml", "https://i.imgur.com/B6QKBgC.png");
       message.channel.send(catemb);
     } catch (error) {
-      const errorEmbed = new Discord.RichEmbed()
+      const errorEmbed = new Discord.MessageEmbed()
         .setColor("#ff0000")
         .setTitle(cross + " Uh Oh! there was an error!")
         .addField(

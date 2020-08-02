@@ -14,7 +14,7 @@ module.exports = {
     const guild = message.guild;
 
     async function exec() {
-      if (message.author.id !== "305771483865546752") {
+      if (!["305771483865546752", "391984806638125066"].includes(message.author.id))  {
         message.delete();
         return;
       }
@@ -27,11 +27,11 @@ module.exports = {
           return;
         }
         evaled = await eval(args.join(" "));
-        message.react(client.emojis.get("655807079784644608"));
+        message.react(client.emojis.cache.get("655807079784644608"));
         message.channel.send("Output: " + trim(evaled, 512));
       } catch (error) {
-        message.react(client.emojis.get("655807081240330245"));
-        const flipemb = new Discord.RichEmbed()
+        message.react(client.emojis.cache.get("655807081240330245"));
+        const flipemb = new Discord.MessageEmbed()
           .setColor("#ff0000")
           .setTitle(":x: Oh No!")
           .addField("Eval failed!", "```js\n" + error + "```")
