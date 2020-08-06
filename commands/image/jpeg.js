@@ -6,7 +6,7 @@ module.exports = {
   name: "jpeg",
   description: "needs more jpeg",
   guildOnly: false,
-  aliases: [],
+  aliases: ["morejpeg"],
 
   async execute(message, args) {
     const user = message.client.util.getUser(message, args.join(" "));
