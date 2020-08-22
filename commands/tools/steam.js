@@ -14,12 +14,7 @@ module.exports = {
     
         
     const users = "" 
-    
-    
-    try {
-      
-     if(!args.length){
-        const erremb = new Discord.MessageEmbed()
+    const erremb = new Discord.MessageEmbed()
         .setColor("#F04947")
         .setTitle(cross + " I couldn't find that user!")
         .setDescription("Please check again the SteamID you provided \n_(can't find your steamID? find it [here](https://steamid.xyz/))_")
@@ -27,15 +22,22 @@ module.exports = {
         .setFooter(
           "Party! x Steam",
           "https://i.imgur.com/B6QKBgC.png"
-        );
-       
+        );    
+    
+    try {
+      
+     if(!args.length){
        return message.channel.send(erremb)
      }
       
       const response = await fetch(
-        "https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/?key=" + process.env.STEAMKEY + "&format=json&steamids=" + encodeURI(args.join(" ")) // gonna hide the key later
+        "https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/?key=" + process.env.STEAMKEY + "&format=json&steamids=" + encodeURI(args.join(" ")) 
       ).then(response => response.json());
       console.log(response.response);
+      if(!response.response.players[0]){
+        return message.channel.send(erremb)
+      }
+      
       
       const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
       const pad = string => string.toString().padStart(2, "0");
