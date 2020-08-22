@@ -18,7 +18,7 @@ module.exports = {
     
     try {
       
-     if(!args.size){
+     if(!args.length){
         const erremb = new Discord.MessageEmbed()
         .setColor("#F04947")
         .setTitle(cross + " I couldn't find that user!")
