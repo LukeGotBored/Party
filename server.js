@@ -44,8 +44,12 @@ for (const category of commandCategories) {
 
 client.on("ready", () => {
   console.log("Updated! " + time);
-  client.user.setActivity("#StaySafe | Party 4.0");
-  client.user.setStatus("idle");
+    client.user.setPresence({ 
+  status: "idle", 
+  activity: { 
+  name: "#StaySafe | Party 4.0", 
+  type: "PLAYING" 
+  }})
 });
 
 
