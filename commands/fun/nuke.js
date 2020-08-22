@@ -8,6 +8,11 @@ module.exports = {
   aliases: ["explode"],
 
   execute(message, args) {
+    var victim = "Nothing"
+    if(args.size){
+      victim = args.join(" ")
+    }
+    
     const member = message.guild.member(message.author);
     const tick = message.client.emojis.cache.get("655807079784644608").toString()
     const cross = message.client.emojis.cache.get("655807081240330245").toString()
