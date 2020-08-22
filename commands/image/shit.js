@@ -18,7 +18,7 @@ module.exports = {
     );
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
-    const avatar = await Canvas.loadImage(user.displayAvatarURL);
+    const avatar = await Canvas.loadImage(user.displayAvatarURL({size: 1024, format: "png"}));
     ctx.globalAlpha = 0.7;
     ctx.rotate((35 * Math.PI) / 180); // 35 degrees to radians
     ctx.drawImage(avatar, 500, 270, 150, 150);
@@ -30,7 +30,7 @@ module.exports = {
     ctx.globalAlpha = 1;
     ctx.drawImage(overlay, 0, 0, canvas.width, canvas.height);
 
-    const attachment = new Discord.Attachment(
+    const attachment = new Discord.MessageAttachment(
       canvas.toBuffer(),
       user.username + "_shit.png"
     );

@@ -11,8 +11,8 @@ module.exports = {
   async execute(message, args) {
     
     var name = args.join(" ");
-    const tick = message.client.emojis.get("655807079784644608");
-    const cross = message.client.emojis.get("655807081240330245");
+    const tick = message.client.emojis.cache.get("655807079784644608").toString()
+    const cross = message.client.emojis.cache.get("655807081240330245").toString()
     
     
     
@@ -50,8 +50,8 @@ module.exports = {
     
 
         
-      message.guild.createEmoji(message.attachments.array()[0].url, name.toString())
-        .then(emoji => message.channel.send(tick +" Done! Here's **" + emoji.name + "** " + message.client.emojis.get(emoji.id)))
+      message.guild.emojis.create(message.attachments.array()[0].url, name.toString())
+        .then(emoji => message.channel.send(tick +" Done! Here's **" + emoji.name + "** " + message.client.emojis.cache.get(emoji.id)))
           .catch(console.error);
 
   }

@@ -13,7 +13,7 @@ module.exports = {
     const canvas = Canvas.createCanvas(960, 576);
     const ctx = canvas.getContext("2d");
 
-    const avatar = await Canvas.loadImage(user.displayAvatarURL);
+    const avatar = await Canvas.loadImage(user.displayAvatarURL({size: 1024, format: "png"}));
     const overlay = await Canvas.loadImage(
       "https://cdn.glitch.com/ef1e949e-b46b-494b-b247-f5204ca69a84%2F0DB5CF21-8B44-4514-9E0C-2B56BC8084AC.jpeg?v=1581063299710"
     );
@@ -22,7 +22,7 @@ module.exports = {
     ctx.drawImage(overlay, 0, 0, canvas.width, canvas.height);
     ctx.drawImage(avatar, 150, 5, 190, 190);
 
-    const attachment = new Discord.Attachment(canvas.toBuffer(), user.username + "_notstonks.png");
+    const attachment = new Discord.MessageAttachment(canvas.toBuffer(), user.username + "_notstonks.png");
 
     message.channel.send(attachment);
   }

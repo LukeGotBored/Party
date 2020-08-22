@@ -8,15 +8,15 @@ module.exports = {
   aliases: ["owoify", "furrify", "furry", "owotranslate", "uwu"],
 
   async execute(message, args) {
-    const tick = message.client.emojis.get("655807079784644608");
-    const cross = message.client.emojis.get("655807081240330245");
+    const tick = message.client.emojis.cache.get("655807079784644608").toString()
+    const cross = message.client.emojis.cache.get("655807081240330245").toString()
     
 
 
 
     const joinedArgs = args.join(" ");
     
-    if (!message.member.guild.me.hasPermission("MANAGE_WEBHOOKS")){
+    if (!message.guild.me.hasPermission('MANAGE_WEBHOOKS')){
       return message.channel.send(cross +" i don't have dee **Manyage Webhooks** pewmission! UwU")
     }
 
@@ -38,12 +38,12 @@ module.exports = {
 
     const webhook = await message.channel.createWebhook(
       message.member.displayName,
-      message.author.displayAvatarURL
+      {avatar: message.author.displayAvatarURL(), reason: "owo command | Party"}
     );
     const mentionHook = new Discord.WebhookClient(webhook.id, webhook.token);
-    message.delete(50);
+    message.delete({timeout: 50});
 
-    mentionHook.send(owoed, { disableEveryone: true });
+    await mentionHook.send(owoed, { disableEveryone: true });
     mentionHook.delete("Expired - Party!");
   }
 };

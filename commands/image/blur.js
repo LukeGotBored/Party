@@ -5,13 +5,14 @@ const { performance } = require("perf_hooks");
 
 module.exports = {
   name: "blur",
-  description: "give me my glasses back!",
+  description: "make any image blurry!",
   guildOnly: false,
+  cooldown: 5,
   aliases: [],
 
   async execute(message, args) {
     const user = message.client.util.getUser(message, args.join(" "));
-    const loadEmbed = new Discord.RichEmbed()
+    const loadEmbed = new Discord.MessageEmbed()
       .setColor("0xfeb637")
       .setTitle("<a:p_loading:657238016481296403> Loading!")
       .setFooter("Party!", "https://i.imgur.com/B6QKBgC.png");
@@ -20,8 +21,7 @@ module.exports = {
       const before = performance.now();
       const canvas = Canvas.createCanvas(512, 512);
       const ctx = canvas.getContext("2d");
-
-      const avatar = await Canvas.loadImage(user.displayAvatarURL);
+      const avatar = await Canvas.loadImage(user.displayAvatarURL({ format: 'png', size: 1024}));
       ctx.drawImage(avatar, 0, 0, canvas.width, canvas.height);
 
       const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -123,9 +123,9 @@ module.exports = {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.putImageData(dstImageData, 0, 0);
 
-      const attachment = new Discord.Attachment(
+      const attachment = new Discord.MessageAttachment(
         canvas.toBuffer(),
-        user.username + "_blurred.png"
+        user.username + "_blur.png"
       );
 
       loadMessage.delete();

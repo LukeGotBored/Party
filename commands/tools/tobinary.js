@@ -8,8 +8,8 @@ module.exports = {
   aliases: ["convert", "01", "10", "base2"],
 
   execute(message, args) {
-    const tick = message.client.emojis.get("655807079784644608");
-    const cross = message.client.emojis.get("655807081240330245");
+    const tick = message.client.emojis.cache.get("655807079784644608").toString()
+    const cross = message.client.emojis.cache.get("655807081240330245").toString()
     var joinedargs = args.join(" ")
     var binary = ""
     
@@ -26,13 +26,13 @@ module.exports = {
     }
      
   
-    const flipemb = new Discord.RichEmbed()
+    const flipemb = new Discord.MessageEmbed()
       .setColor("0xfeb637")
       .setTitle("Beep Boop")
       .addField("📥 Input:", joinedargs)
       .addField("📤 Output:", binary)
       .setTimestamp()
-      .setFooter("Keep in mind that this is unicode | Party!", "https://i.imgur.com/B6QKBgC.png");
+      .setFooter("unicode | Party!", "https://i.imgur.com/B6QKBgC.png");
     message.channel.send(flipemb);
   }
 };

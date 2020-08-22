@@ -4,14 +4,14 @@ const Canvas = require("canvas");
 
 module.exports = {
   name: "delete",
-  description: "_Delet Dis_",
+  description: "_delet dis image_",
   guildOnly: false,
   aliases: ["delet"],
 
   async execute(message, args) {
     
        const overlay = await Canvas.loadImage(
-      "https://cdn.glitch.com/ef1e949e-b46b-494b-b247-f5204ca69a84%2Fdelet_overlay.png?v=1582038293382"
+      "https://cdn.glitch.com/76b98dfe-b6a5-425a-bd10-be07af6b4014%2Fdelet_overlay.png?v=1597505653835"
     );
     
     
@@ -23,13 +23,13 @@ module.exports = {
     ctx.fillStyle = "#FFFFFF"
     ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-    const avatar = await Canvas.loadImage(user.displayAvatarURL);
+    const avatar = await Canvas.loadImage(user.displayAvatarURL({size: 1024, format: 'png'}));
     ctx.drawImage(avatar, 120, 135, 195 , 195);
 
  
     ctx.drawImage(overlay, 0, 0, canvas.width, canvas.height);
 
-    const attachment = new Discord.Attachment(
+    const attachment = new Discord.MessageAttachment(
       canvas.toBuffer(),
       user.username + "_delete.png"
     );  

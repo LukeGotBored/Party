@@ -61,13 +61,13 @@ module.exports = {
 
 
     
-    const coronaEmbed = new Discord.RichEmbed()
+    const coronaEmbed = new Discord.MessageEmbed()
       .setThumbnail("https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/236/hospital_1f3e5.png")
       .setColor("0xfeb637")
       .setTitle("Coronavirus Stats")
       .addField("Cases:", latest.latest.confirmed, true)
       .addField("Deaths:", latest.latest.deaths, true)
-      .addField("**Recoveries**:", latest.latest.  recovered, true)
+      .addField("**Recoveries**:", "unavailable", true)
       .setImage(images[Math.floor(Math.random() * images.length)])
       .setFooter(
         "Party! | images provided by the World Health Organization",

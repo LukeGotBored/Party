@@ -33,7 +33,7 @@ module.exports = {
 
     ctx.drawImage(overlay, 0, 0, canvas.width, canvas.height);
 
-    const attachment = new Discord.Attachment(
+    const attachment = new Discord.MessageAttachment(
       canvas.toBuffer(),
       user.username + "_google.png"
     );

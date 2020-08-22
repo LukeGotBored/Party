@@ -7,7 +7,7 @@ module.exports = {
 
   execute(message, args) {
     var server = message.guild;
-    const debugEmbed = new Discord.RichEmbed()
+    const debugEmbed = new Discord.MessageEmbed()
       .setThumbnail("https://i.imgur.com/t1P6d5P.gif")
       .setColor("0xfeb637")
       .setTitle("Invite Party to your server!")

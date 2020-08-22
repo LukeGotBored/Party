@@ -3,7 +3,7 @@ const Canvas = require("canvas");
 
 module.exports = {
   name: "beautiful",
-  description: "a masterpiece",
+  description: "make any image a masterpiece!",
   guildOnly: false,
   aliases: [],
 
@@ -12,10 +12,10 @@ module.exports = {
     const canvas = Canvas.createCanvas(512, 512);
     const ctx = canvas.getContext("2d");
 
-    const avatar1 = await Canvas.loadImage(user.displayAvatarURL);
+    const avatar1 = await Canvas.loadImage(user.displayAvatarURL({ format: 'png', size: 1024}));
     ctx.drawImage(avatar1, 340, 30, 140, 140);
 
-    const avatar2 = await Canvas.loadImage(user.displayAvatarURL);
+    const avatar2 = await Canvas.loadImage(user.displayAvatarURL({ format: 'png', size: 1024}));
     ctx.drawImage(avatar2, 340, 290, 140, 140);
 
     const overlay = await Canvas.loadImage(
@@ -23,9 +23,9 @@ module.exports = {
     );
     ctx.drawImage(overlay, 0, 0, canvas.width, canvas.height);
 
-    const attachment = new Discord.Attachment(
+    const attachment = new Discord.MessageAttachment(
       canvas.toBuffer(),
-      user.username + "_brazzers.png"
+      user.username + "_beautiful.png"
     );
 
     message.channel.send(attachment);

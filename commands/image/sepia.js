@@ -12,7 +12,7 @@ module.exports = {
     const user = message.client.util.getUser(message, args.join(" "));
     const canvas = Canvas.createCanvas(512, 512);
     const ctx = canvas.getContext("2d");
-    const avatar = await Canvas.loadImage(user.displayAvatarURL);
+    const avatar = await Canvas.loadImage(user.displayAvatarURL({size: 1024, format: "png"}));
     ctx.drawImage(avatar, 0, 0, canvas.width, canvas.height);
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
@@ -26,7 +26,7 @@ module.exports = {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.putImageData(imageData, 0, 0);
 
-    const attachment = new Discord.Attachment(
+    const attachment = new Discord.MessageAttachment(
       canvas.toBuffer(),
       user.username + "_sepia.png"
     );

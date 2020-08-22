@@ -3,9 +3,9 @@ const fetch = require("node-fetch");
 
 module.exports = {
   name: "achievement",
-  description: "Achievement get",
+  description: "Generate minecraft achievements!",
   guildOnly: false,
-  aliases: ["coinflip", "coin", "flipacoin", "c", "cf"],
+  aliases: [],
 
   execute(message, args) {
     var joinedargs = args.join(" ")
@@ -17,7 +17,7 @@ module.exports = {
     // if no args provided  
     if(!joinedargs){
       
-    const flipemb = new Discord.RichEmbed()
+    const flipemb = new Discord.MessageEmbed()
       .setColor("0xfeb637")
       .setTitle("Achievement Get!")
       .setDescription("say what you want to achieve!a\n(_p!achievement learning stuff!_)")
@@ -36,9 +36,9 @@ module.exports = {
     
     
     
-    var url = "https://minecraftskinstealer.com/achievement/" + Math.floor(Math.random() * 39) + 1  + "/Achievement+Get%21/" + encodeURIComponent(joinedargs)
+    var url = "https://minecraftskinstealer.com/achievement/" + Math.floor(Math.random() * 35) + 1  + "/Achievement+Get%21/" + encodeURIComponent(joinedargs)
 
-    const flipemb = new Discord.RichEmbed()
+    const flipemb = new Discord.MessageEmbed()
       .setColor("0xfeb637")
       .setTitle("Achievement Get!")
       .setDescription(joinedargs)
@@ -48,3 +48,4 @@ module.exports = {
     message.channel.send(flipemb);
   }
 };
+  

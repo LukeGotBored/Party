@@ -4,7 +4,7 @@ const Canvas = require("canvas");
 
 module.exports = {
   name: "disabilities",
-  description: "watch out!",
+  description: "honestly i don't even know what to write here",
   guildOnly: false,
   aliases: [],
 
@@ -16,7 +16,7 @@ module.exports = {
     ctx.fillStyle = "#FFFFFF"
     ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-    const avatar = await Canvas.loadImage(user.displayAvatarURL);
+    const avatar = await Canvas.loadImage(user.displayAvatarURL({size: 1024, format: "png"}));
     ctx.drawImage(avatar, 310, 145, 200, 200);
 
     
@@ -28,7 +28,7 @@ module.exports = {
 
 
 
-    const attachment = new Discord.Attachment(
+    const attachment = new Discord.MessageAttachment(
       canvas.toBuffer(),
       user.username + "_disgusting.png"
     );

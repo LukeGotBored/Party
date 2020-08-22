@@ -22,20 +22,20 @@ module.exports = {
         
     var cpresence = "Error"  
     
-    if(!user.presence.game){
+    if(!user.presence.activities[0]){
       cpresence = "Nothing!"
     }
     
-    else if(user.presence.game.state){
-      cpresence = user.presence.game.state
+    else if(user.presence.activities[0].state){
+      cpresence = user.presence.activities[0].state
     }
     
     else{
-      cpresence = user.presence.game.name
+      cpresence = user.presence.activities[0].name
     }
     
     
-    const avatar = await Canvas.loadImage(user.displayAvatarURL);
+    const avatar = await Canvas.loadImage(user.displayAvatarURL({ format: 'jpg' }));
     const canvas = Canvas.createCanvas(background.width, background.height);
     const ctx = canvas.getContext("2d");
     ctx.drawImage(background, 0, 0);
@@ -90,18 +90,18 @@ module.exports = {
     ctx.arc(814, 305, 25, 0, Math.PI * 2);
     ctx.fill();
 
-    const attachment = new Discord.Attachment(
+    const attachment = new Discord.MessageAttachment(
       canvas.toBuffer(),
       user.username + "_profile.png"
     );
 
     
-    const avatarEmbed = new Discord.RichEmbed()
+    const avatarEmbed = new Discord.MessageEmbed()
         .setColor("0xfeb637")
         .setImage("attachment://" + user.username + "_profile.png")
         .setTitle(user.username+ "'s Card!" )
         .setTimestamp()
-        .attachFile(attachment)
+        .attachFiles(attachment)
         .setFooter("Party!", "https://i.imgur.com/B6QKBgC.png");
       message.channel.send(avatarEmbed);
     

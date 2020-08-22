@@ -1,4 +1,6 @@
- const Discord = require("discord.js");
+// This command seems not to work with dynamic ips
+
+const Discord = require("discord.js");
 const fetch = require("node-fetch");
 const brawl = require("brawlstars.js");
 const token = process.env.BRAWL
@@ -38,8 +40,8 @@ module.exports = {
     
     
     
-      const tick = message.client.emojis.get("655807079784644608");
-      const cross = message.client.emojis.get("655807081240330245");
+      const tick = message.client.emojis.get("655807079784644608").toString()
+      const cross = message.client.emojis.get("655807081240330245").toString()
 
       try{
         const player = await client.getPlayer(args[0].toUpperCase())
@@ -59,7 +61,7 @@ module.exports = {
         
         
         var icon;
-        const BrawlEmb = new Discord.RichEmbed()
+        const BrawlEmb = new Discord.MessageEmbed()
           .setColor("0xfeb637")
           .setTitle("<:brawl:699570156803850280> BrawlStats | " + player.data.name + "  " + player.data.tag)
           //.setThumbnail(icon = randomIcon[Math.floor(Math.random() * randomIcon.length)])
