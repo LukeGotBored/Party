@@ -4,7 +4,7 @@ const Canvas = require("canvas");
 
 module.exports = {
   name: "america",
-  description: "AMERICA, F*** YEAH",
+  description: "'Muricanize any image!'",
   guildOnly: false,
   aliases: [],
 
@@ -17,7 +17,7 @@ module.exports = {
     ctx.fillStyle = "#FFFFFF"
     ctx.fillRect(0, 0, canvas.width, canvas.height)
     
-    const avatar = await Canvas.loadImage(user.displayAvatarURL);
+    const avatar = await Canvas.loadImage(user.displayAvatarURL({ format: 'png', size: 1024}));
     ctx.drawImage(avatar, 0, 0, canvas.width, canvas.height);
 
     const overlay = await Canvas.loadImage(
@@ -26,7 +26,7 @@ module.exports = {
     ctx.globalAlpha = 0.4;
     ctx.drawImage(overlay, 0, 0, canvas.width, canvas.height);
 
-    const attachment = new Discord.Attachment(
+    const attachment = new Discord.MessageAttachment(
       canvas.toBuffer(),
       user.username + "_america.png"
     );

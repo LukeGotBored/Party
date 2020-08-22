@@ -9,26 +9,27 @@ module.exports = {
   aliases: [],
 
   async execute(message, args) {
-    const tick = message.client.emojis.get("655807079784644608");
-    const cross = message.client.emojis.get("655807081240330245");
+    const tick = message.client.emojis.cache.get("655807079784644608").toString();
+    const cross = message.client.emojis.cache.get("655807081240330245").toString();
     
     const response = await fetch("https://hackerman.wtf/api").then(
         response => response.json()
     );
     
-    if (!message.member.guild.me.hasPermission("MANAGE_WEBHOOKS")){
+    
+    if (!message.guild.me.hasPermission('MANAGE_WEBHOOKS')){
       return message.channel.send(cross +" the firewall of permissions doesn't allow me to enter the mainframe! I need the **Manage Webhooks** permission to work!")
     }
     
     const webhook = await message.channel.createWebhook(
       "Hackerman | Party",
-      "https://cdn.glitch.com/ef1e949e-b46b-494b-b247-f5204ca69a84%2Ftest.png?v=1582132089908"
+      {avatar: "https://cdn.glitch.com/ef1e949e-b46b-494b-b247-f5204ca69a84%2Ftest.png?v=1582132089908", reason: "Hackerman command ran by" + message.author.tag}
     );
     
     
     
     const mentionHook = new Discord.WebhookClient(webhook.id, webhook.token);
-    mentionHook.send("_" + response.quotes + "_", { "disableEveryone": true });
+    await mentionHook.send("_" + response.quotes + "_", { "disableEveryone": true });
     
     
     

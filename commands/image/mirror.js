@@ -2,17 +2,17 @@ const Discord = require("discord.js");
 const Canvas = require("canvas");
 
 module.exports = {
-  name: "obabo",
-  description: "obabo, presiserp of unitinu",
+  name: "mirror",
+  description: "m i r r o r",
   guildOnly: false,
-  aliases: ["unitinu", "mirror"],
+  aliases: ["obabo"],
 
   async execute(message, args) {
     const user = message.client.util.getUser(message, args.join(" "));
     const canvas = Canvas.createCanvas(512, 512);
     const ctx = canvas.getContext("2d");
 
-    const avatar = await Canvas.loadImage(user.displayAvatarURL);
+    const avatar = await Canvas.loadImage(user.displayAvatarURL({size: 1024, format: "png"}));
     ctx.drawImage(avatar, 0, 0, canvas.width, canvas.height);
 
     const { width, height } = canvas;
@@ -44,7 +44,7 @@ module.exports = {
 
     const obabied = obaboCanvas.toBuffer();
 
-    const attachment = new Discord.Attachment(
+    const attachment = new Discord.MessageAttachment(
       obabied,
       user.username + "_obabo.png"
     );

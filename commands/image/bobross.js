@@ -16,11 +16,11 @@ module.exports = {
     const ctx = canvas.getContext("2d");
     ctx.fillStyle = "#FFFFFF"
     ctx.fillRect(0, 0, canvas.width, canvas.height)
-    const avatar = await Canvas.loadImage(user.displayAvatarURL);
+    const avatar = await Canvas.loadImage(user.displayAvatarURL({format: "png", size: 1024}));
     ctx.drawImage(avatar, 36, 10, 340, 320);
     ctx.drawImage(overlay, 0, 0);
 
-    const attachment = new Discord.Attachment(
+    const attachment = new Discord.MessageAttachment(
       canvas.toBuffer(),
       user.username + "_bobross.png"
     );

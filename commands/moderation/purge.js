@@ -7,8 +7,8 @@ module.exports = {
   aliases: ["clear", "clean", "delete", "bulkdelete"],
 
   execute(message, args) {
-    const tick = message.client.emojis.get("655807079784644608");
-    const cross = message.client.emojis.get("655807081240330245");
+    const tick = message.client.emojis.cache.get("655807079784644608").toString()
+    const cross = message.client.emojis.cache.get("655807081240330245").toString()
     const amount = parseInt(args[0]);
 
     if (message.member.hasPermission("MANAGE_MESSAGES")) {

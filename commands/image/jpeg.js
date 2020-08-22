@@ -6,19 +6,19 @@ module.exports = {
   name: "jpeg",
   description: "needs more jpeg",
   guildOnly: false,
-  aliases: ["morejpeg"],
+  aliases: [],
 
   async execute(message, args) {
     const user = message.client.util.getUser(message, args.join(" "));
     const canvas = Canvas.createCanvas(512, 512);
     const ctx = canvas.getContext("2d");
 
-    const avatar = await Canvas.loadImage(user.displayAvatarURL);
+    const avatar = await Canvas.loadImage(user.displayAvatarURL({size: 1024, format: "png"}));
     ctx.drawImage(avatar, 0, 0, canvas.height, canvas.width);
 
-    const jpegged = canvas.toBuffer("image/jpeg", { quality: 0.04 });
+    const jpegged = canvas.toBuffer("image/jpeg", { quality: 0.03 });
 
-    const attachment = new Discord.Attachment(
+    const attachment = new Discord.MessageAttachment(
       jpegged,
       user.username + "_jpeg.jpeg"
     );

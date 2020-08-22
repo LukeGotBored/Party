@@ -9,8 +9,8 @@ module.exports = {
   aliases: [],
 
   async execute(message, args) {
-    const tick = message.client.emojis.get("655807079784644608");
-    const cross = message.client.emojis.get("655807081240330245");
+    const tick = message.client.emojis.cache.get("655807079784644608").toString()
+    const cross = message.client.emojis.cache.get("655807081240330245").toString()
     const overlay = await Canvas.loadImage(
       "https://cdn.glitch.com/ef1e949e-b46b-494b-b247-f5204ca69a84%2Fwants%20to%20know%20your%20location.png?v=1581173651834"
     );
@@ -42,9 +42,9 @@ module.exports = {
     ctx.fillText(text, paddingStart, 45);
     ctx.globalAlpha = 1;
 
-    const attachment = new Discord.Attachment(
+    const attachment = new Discord.MessageAttachment(
       canvas.toBuffer(),
-      message.author.username + "_google.png"
+      message.author.username + "_location.png"
     );
 
     message.channel.send(attachment);

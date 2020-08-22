@@ -8,8 +8,8 @@ module.exports = {
   aliases: ["talk", "topics", "t"],
 
   execute(message, args) {
-    const tick = message.client.emojis.get("655807079784644608");
-    const cross = message.client.emojis.get("655807081240330245");
+    const tick = message.client.emojis.cache.get("655807079784644608").toString()
+    const cross = message.client.emojis.cache.get("655807081240330245").toString()
     const topics = [
       "What Is The Most Beautiful Song You Have Heard?",
       "What Song Gets You Pumped Every Time It Comes On?",
@@ -63,7 +63,7 @@ module.exports = {
 
     const topic = topics[Math.floor(Math.random() * topics.length)];
 
-    const topicemb = new Discord.RichEmbed()
+    const topicemb = new Discord.MessageEmbed()
       .setColor("0xfeb637")
       .setTitle("🗣️ Here's a cool topic!")
       .addField("Let's talk about...", topic.toLowerCase())

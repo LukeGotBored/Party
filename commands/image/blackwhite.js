@@ -3,16 +3,16 @@ const fetch = require("node-fetch");
 const Canvas = require("canvas");
 
 module.exports = {
-  name: "bw",
-  description: "turn stuff black and white",
+  name: "blackwhite",
+  description: "turn any image black and white!",
   guildOnly: false,
-  aliases: ["grayscale", "mono", "blackwhite", "gray"],
+  aliases: ["grayscale", "mono", "bw", "gray"],
 
   async execute(message, args) {
     const user = message.client.util.getUser(message, args.join(" "))
     const canvas = Canvas.createCanvas(512, 512);
     const ctx = canvas.getContext("2d");
-    const avatar = await Canvas.loadImage(user.displayAvatarURL);
+    const avatar = await Canvas.loadImage(user.displayAvatarURL({ format: 'png', size: 1024}));
     ctx.drawImage(avatar, 0, 0, canvas.width, canvas.height);
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
@@ -27,7 +27,7 @@ module.exports = {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.putImageData(imageData, 0, 0);
 
-    const attachment = new Discord.Attachment(
+    const attachment = new Discord.MessageAttachment(
       canvas.toBuffer(),
       user.username + "_bw.png"
     );

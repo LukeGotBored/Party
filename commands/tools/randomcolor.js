@@ -22,15 +22,15 @@ module.exports = {
     ctx.fillStyle = color;
     ctx.fillRect(0, 0, 64, 64)
 
-    const attachment = new Discord.Attachment(canvas.toBuffer(), "color.png");
+    const attachment = new Discord.MessageAttachment(canvas.toBuffer(), "color.png");
     
-    const coloremb = new Discord.RichEmbed()
+    const coloremb = new Discord.MessageEmbed()
       .setColor(color)
       .setTitle("Here's your random color!")
       .setDescription(color)
       .setThumbnail("attachment://color.png")
       .setTimestamp()
-      .attachFile(attachment)
+      .attachFiles(attachment)
       .setFooter("Party!", "https://i.imgur.com/B6QKBgC.png");
     message.channel.send(coloremb)
   }

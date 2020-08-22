@@ -11,7 +11,7 @@ module.exports = {
 
   async execute(message, args) {
     
-    const cross = message.client.emojis.get("655807081240330245");
+    const cross = message.client.emojis.cache.get("655807081240330245").toString()
 
     // try to parse default emoji
     let emoji = message.client.util.parseEmoji(args.join(" ")).url;
@@ -19,7 +19,7 @@ module.exports = {
     let customEmoji;
     if (!emoji) customEmoji = (parse(args.join(" "))[0] || {}).url;
     
-    let emojiemb = new Discord.RichEmbed()
+    let emojiemb = new Discord.MessageEmbed()
         .setColor("0xfeb637")
         .setTitle("Here's the emoji")
         .setTimestamp()
@@ -39,7 +39,7 @@ module.exports = {
         ctx.drawImage(emoji, 0, 0, 144, 144);
         message.channel.send(emojiemb
           .setDescription(`[Download](${customEmoji})`)
-          .attachFile({ attachment: canvas.toBuffer(), name: "emoji.png" })
+          .attachFiles({ attachment: canvas.toBuffer(), name: "emoji.png" })
           .setImage("attachment://emoji.png")
         )
 

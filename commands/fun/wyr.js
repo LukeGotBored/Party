@@ -5,11 +5,11 @@ module.exports = {
   name: "wouldyourather",
   description: "Would you rather...",
   guildOnly: false,
-  aliases: ["wyr", "wouldyr", "poll"],
+  aliases: ["wyr", "wouldyr"],
 
   execute(message, args) {
-    const tick = message.client.emojis.get("655807079784644608");
-    const cross = message.client.emojis.get("655807081240330245");
+    const tick = message.client.emojis.cache.get("655807079784644608").toString()
+    const cross = message.client.emojis.cache.get("655807081240330245").toString()
     const topics = [
         "Eat peanut butter flavored poo or poo-flavored peanut butter?",
         "Break the most valuable thing in your house or the most valuable thing in a store?",
@@ -76,7 +76,7 @@ module.exports = {
 
     const topic = topics[Math.floor(Math.random() * topics.length)];
 
-    const topicemb = new Discord.RichEmbed()
+    const topicemb = new Discord.MessageEmbed()
       .setColor("0xfeb637")
       .setTitle("👥 Would you rather..")
       .setDescription(topic.toLowerCase())

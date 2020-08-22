@@ -1,9 +1,9 @@
 const fs = require("fs");
 const Discord = require("discord.js");
 const express = require("./core/express.js");
-const DBL = require("dblapi.js");
+//const DBL = require("dblapi.js");
 const client = new Discord.Client();
-const dbl = new DBL(process.env.BOTGG, client);
+//const dbl = new DBL(process.env.BOTGG, client);
 const { prefix, status, version } = require("./core/config.json");
 const cooldowns = new Discord.Collection();
 const util = require("./utils/functions.js");
@@ -44,7 +44,7 @@ for (const category of commandCategories) {
 
 client.once("ready", () => {
   console.log("Updated! " + time);
-  client.user.setActivity("p!help | +500 Guilds!");
+  client.user.setActivity("pb!help | Party 3.0");
   client.user.setStatus("idle");
 });
 
@@ -60,7 +60,6 @@ function getUserFromMention(mention) {
 		return client.users.get(mention);
 	}
 }
-
 
 function getUserFromMentionRegEx(mention) {
 	const matches = mention.match(/^<@!?(\d+)>$/);
@@ -102,14 +101,14 @@ client.on("message", async message => {
       return message.channel
         .send(
           ":x: Hey **" +
-            message.author +
+            message.author.username +
             ",** " +
             `Slow Down! You need to wait ${Math.round(
               timeLeft
             )} more second(s) before reusing the \`${command.name}\` command!`
         )
         .then(msg => {
-          msg.delete(5000);
+          msg.delete({timeout: 5000});
         });
     }
   }
@@ -123,12 +122,18 @@ client.on("message", async message => {
     }
     
     if (command.nsfwOnly && !message.channel.nsfw){
-      return message.reply("<a:p_no:655807081240330245> That command will be shown only on NSFW channels!\nplease mark the channel as NSFW before using it. #BeCompliant")
+      return message.reply("<a:p_no:655807081240330245> This command will be shown only on NSFW channels!\nplease mark the channel as NSFW before using it. #BeCompliant")
     }
+    
+    
+     if (command.developerOnly && !["305771483865546752", "391984806638125066"].includes(message.author.id))  {
+        message.delete();
+        return message.reply("<a:p_no:655807081240330245> This command is only for developers!")
+     }
 
     command.execute(message, args);
   } catch (error) {
-    const errorEmbed = new Discord.RichEmbed()
+    const errorEmbed = new Discord.MessageEmbed()
       .setColor("#ff0000")
       .setTitle(":x: Uh Oh! there was an error!")
       .addField(
@@ -141,5 +146,5 @@ client.on("message", async message => {
   }
 });
 
-client.login(process.env.DISCORD_BOT_TOKEN || -1)
+client.login(process.env.DISCORD_BOT_TOKEN)
   .then(console.log("Successfully logged in!"));

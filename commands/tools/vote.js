@@ -8,7 +8,7 @@ module.exports = {
   
 
   execute(message, args) {
-    const voteemb = new Discord.RichEmbed()
+    const voteemb = new Discord.MessageEmbed()
       .setTitle("Support Party's Development!")
       .addField("Vote!", "** **")
       .addField(
@@ -26,7 +26,6 @@ module.exports = {
           "[Vote!](https://botlist.space/bot/527625435128004628/upvote)",
           true,
       )
-      .addBlankField()
       
       .addField("Donate!", "Not Available", true)
       .setColor(0xfeb637)

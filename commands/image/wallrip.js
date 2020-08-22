@@ -14,7 +14,7 @@ module.exports = {
     const ctx = canvas.getContext("2d");
     ctx.fillStyle = "#FFFFFF";
 
-    const avatar = await Canvas.loadImage(user.displayAvatarURL);
+    const avatar = await Canvas.loadImage(user.displayAvatarURL({size: 1024, format: "png"}));
     ctx.drawImage(avatar, 120, 170, 370, 370);
 
     const overlay = await Canvas.loadImage(
@@ -23,7 +23,7 @@ module.exports = {
     ctx.drawImage(overlay, 0, 0, canvas.width, canvas.height);
 
     // Buffer the image and send the file as an attachment
-    const attachment = new Discord.Attachment(
+    const attachment = new Discord.MessageAttachment(
       canvas.toBuffer(),
       user.username + "_wallrip.png"
     );

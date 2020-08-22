@@ -7,11 +7,12 @@ module.exports = {
   name: "trash",
   description: "that really looks like... nevermind!",
   guildOnly: false,
+  cooldown: 5,
   aliases: ["glasses", "spiderman"],
 
   async execute(message, args) {
     const user = message.client.util.getUser(message, args.join(" "));
-    const loadEmbed = new Discord.RichEmbed()
+    const loadEmbed = new Discord.MessageEmbed()
       .setColor("0xfeb637")
       .setTitle("<a:p_loading:657238016481296403> Loading!")
       .setFooter("Party!", "https://i.imgur.com/B6QKBgC.png");
@@ -22,7 +23,7 @@ module.exports = {
       const ctx = canvas.getContext("2d");
       
       const overlay = await Canvas.loadImage("https://cdn.glitch.com/ef1e949e-b46b-494b-b247-f5204ca69a84%2Foverlay.png?v=1586730187928")
-      const avatar = await Canvas.loadImage(user.displayAvatarURL);
+      const avatar = await Canvas.loadImage(user.displayAvatarURL({size: 1024, format: "png"}));
     
       ctx.drawImage(avatar, 250, 0, 266, 266);
       
@@ -127,7 +128,7 @@ module.exports = {
       ctx.putImageData(dstImageData, 0, 0);
       ctx.drawImage(overlay, 0, 0, canvas.width, canvas.height);
 
-      const attachment = new Discord.Attachment(
+      const attachment = new Discord.MessageAttachment(
         canvas.toBuffer(),
         user.username + "_blurred.png"
       );

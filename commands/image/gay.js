@@ -19,7 +19,7 @@ module.exports = {
     ctx.fillStyle = "#FFFFFF"
     ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-    const avatar = await Canvas.loadImage(user.displayAvatarURL);
+    const avatar = await Canvas.loadImage(user.displayAvatarURL({size: 1024, format: 'png'}));
     ctx.drawImage(avatar, 0, 0, canvas.width, canvas.height);
 
     const overlay = await Canvas.loadImage(
@@ -28,7 +28,7 @@ module.exports = {
     ctx.globalAlpha = 0.4;
     ctx.drawImage(overlay, 0, 0, canvas.width, canvas.height);
 
-    const attachment = new Discord.Attachment(
+    const attachment = new Discord.MessageAttachment(
       canvas.toBuffer(),
       user.username + "_gay.png"
     );
