@@ -44,7 +44,7 @@ for (const category of commandCategories) {
 
 client.once("ready", () => {
   console.log("Updated! " + time);
-  client.user.setActivity("pb!help | Party 3.0");
+  client.user.setActivity("#StaySafe | Party 4.0");
   client.user.setStatus("idle");
 });
 
