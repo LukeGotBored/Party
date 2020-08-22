@@ -42,7 +42,7 @@ for (const category of commandCategories) {
   }
 }
 
-client.once("ready", () => {
+client.on("ready", () => {
   console.log("Updated! " + time);
   client.user.setActivity("#StaySafe | Party 4.0");
   client.user.setStatus("idle");
