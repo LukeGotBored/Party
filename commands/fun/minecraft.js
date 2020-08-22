@@ -15,7 +15,7 @@ module.exports = {
         response => response.json()
       );
       
-    if(!args.size){
+    if(!args.length){
       return message.channel.send(cross + " You need to provide a minecraft username!")
     }
       
