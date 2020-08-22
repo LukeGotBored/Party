@@ -1,9 +1,9 @@
 const fs = require("fs");
 const Discord = require("discord.js");
 const express = require("./core/express.js");
-//const DBL = require("dblapi.js");
+const DBL = require("dblapi.js");
 const client = new Discord.Client();
-//const dbl = new DBL(process.env.BOTGG, client);
+const dbl = new DBL(process.env.BOTGG, client);
 const { prefix, status, version } = require("./core/config.json");
 const cooldowns = new Discord.Collection();
 const util = require("./utils/functions.js");
