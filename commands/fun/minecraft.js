@@ -15,7 +15,9 @@ module.exports = {
         response => response.json()
       );
       
-      
+    if(!args.size){
+      return message.channel.send(cross + " You need to provide a minecraft username!")
+    }
       
       
       const uuid = uuidresponse.id
@@ -41,8 +43,3 @@ module.exports = {
   }
 };
 
-
-
-
-//  GET https://sessionserver.mojang.com/session/minecraft/profile/<uuid> 
-//  skin + cape
