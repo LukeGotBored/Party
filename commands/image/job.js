@@ -16,14 +16,15 @@ module.exports = {
 
 
     const overlay = await Canvas.loadImage(
-      "https://cdn.glitch.com/76b98dfe-b6a5-425a-bd10-be07af6b4014%2Fjob_overlay.png?v=1597784341785"
+      "https://cdn.glitch.com/76b98dfe-b6a5-425a-bd10-be07af6b4014%2Fjob_overlay.png?"
     );
     ctx.drawImage(overlay, 0, 0, canvas.width, canvas.height);
     const avatar = await Canvas.loadImage(user.displayAvatarURL({ format: 'png', size: 1024}));
     ctx.drawImage(avatar, 152, 68, 79, 79);
+    ctx.drawImage(avatar, 20, 864, 79, 79);
     
     const overlay2 = await Canvas.loadImage(
-      "https://cdn.glitch.com/76b98dfe-b6a5-425a-bd10-be07af6b4014%2Fuserinfo_overlay2.png?v=1597784582463"
+      "https://cdn.glitch.com/76b98dfe-b6a5-425a-bd10-be07af6b4014%2Fjob_overlay2.png?v=1598104710932"
     );
     ctx.drawImage(overlay2, 0, 0, canvas.width, canvas.height);
     
