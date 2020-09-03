@@ -3,13 +3,13 @@ const fetch = require("node-fetch");
 
 module.exports = {
   name: "nuke",
-  description: "Get free nitro 100% legit no scam no virus",
+  description: "Nuke someone lol",
   guildOnly: false,
   aliases: ["explode"],
 
   execute(message, args) {
     var victim = "Nothing"
-    if(args.size){
+    if(args.length){
       victim = args.join(" ")
     }
     
