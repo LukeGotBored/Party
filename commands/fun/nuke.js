@@ -19,7 +19,7 @@ module.exports = {
     const flipemb = new Discord.MessageEmbed()
       .setColor("0xfeb637")
       .setTitle("Nuke sent!")
-      .setDescription((member ? member.displayName : member.username)   + " just nuked **" + args.join(" ") + "!**")
+      .setDescription((member ? member.displayName : member.username)   + " just nuked **" + victim + "!**")
       .setImage("https://i.pinimg.com/originals/6c/48/5e/6c485efad8b910e5289fc7968ea1d22f.gif")
       .setTimestamp()
       .setFooter("Party!", "https://i.imgur.com/B6QKBgC.png");
