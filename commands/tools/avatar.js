@@ -15,7 +15,7 @@ module.exports = {
       const avatarEmbed = new Discord.MessageEmbed()
         .setColor("0xfeb637")
         .setTitle(user.username + "'s Avatar")
-        .setImage(user.displayAvatarURL({size: 2048, format: "png"}))
+        .setImage(user.displayAvatarURL({size: 2048, format: "png", dynamic: true}))
         .setFooter("Party!", "https://i.imgur.com/B6QKBgC.png");
       message.channel.send(avatarEmbed);
   }
