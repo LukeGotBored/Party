@@ -47,7 +47,7 @@ client.on("ready", () => {
     client.user.setPresence({ 
   status: "idle", 
   activity: { 
-  name: "#StaySafe | Party 4.0", 
+  name: "Happy Spooktober! | Party 4.0", 
   type: "PLAYING" 
   }})
 });
