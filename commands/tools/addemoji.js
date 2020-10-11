@@ -5,7 +5,7 @@ const fs = require('fs')
 module.exports = {
   name: "addemoji",
   description: "add emojis to your server, with ease!",
-  aliases: ["addnewemoji", "newemoji", "ne"],
+  aliases: ["addnewemoji", "newemoji"],
   guildonly: true,
   
   async execute(message, args) {
@@ -51,7 +51,7 @@ module.exports = {
 
         
       message.guild.emojis.create(message.attachments.array()[0].url, name.toString())
-        .then(emoji => message.channel.send(tick +" Done! Here's **" + emoji.name + "** " + message.client.emojis.cache.get(emoji.id)))
+        .then(emoji => message.channel.send(tick +" Done! Here's **" + emoji.name + ":** " + message.client.emojis.cache.get(emoji.id.toString()).toString()))
           .catch(console.error);
 
   }
