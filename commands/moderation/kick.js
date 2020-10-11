@@ -4,62 +4,86 @@ module.exports = {
   name: "kick",
   description: "🔨",
   guildOnly: true,
-  aliases: [],
+
 
   async execute(message, args) {
     const tick = message.client.emojis.cache.get("655807079784644608").toString()
     const cross = message.client.emojis.cache.get("655807081240330245").toString()
-
-    var user = message.mentions.members.first(); // returns the user object if an user mention exists
-    var banReason = args.slice(1).join(" "); // Reason of the ban (Everything behind the mention)
-    if (user.id === message.author.id) return message.channel.send(cross + ' Hold on did you just try to kick yourself?');
-    if (!message.member.hasPermission("KICK_MEMBERS")){
-      return message.channel.send(cross + "You don't have the **Kick Members** permission!")
-    }
     
-    if (!message.member.hasPermission("KICK_MEMBERS")){
-      return message.channel.send(cross + "You don't have the **Kick Members** permission!")
-    }
+    let kicked = message.mentions.users.first() || message.client.users.resolve(args[0]);
+    let reason = args.slice(1).join(" ") + " | kicked by " + message.author.username
     
-    if (!message.guild.me.hasPermission('KICK_MEMBERS')){
-      return message.channel.send(cross + "I don't have the **Kick Members** permission!")
-    }
     
-    if (!user) {
-      try {
-        if (!message.guild.members.get(args.slice(0, 1).join(" ")))
-          throw new Error(cross + " I Couldn't find that user!");
-          user = message.guild.members.get(args.slice(0, 1).join(" "));
-          
-        
-      } catch (error) {
-        console.log(error)
-        return message.channel.send(cross + " **" + message.author.username + "**, You didn't provide a valid user to kick!");
-        
-      }
-    }
-
-    if (!message.guild.member(user).kickable) return message.reply(cross + ' I can\'t kick a moderator!');
-
-    if (!banReason) {
-      banReason = "Unspecified";
-    }
-
-    const banEmb = new Discord.MessageEmbed()
-        .setColor("0xfeb637")
-        .setAuthor("Kicked by " + message.author.username , message.author.displayAvatarURL({type: "png", size: 1024}))
-        .setTitle(user.user.tag + " has been kicked!")
-        .setThumbnail(user.user.displayAvatarURL({type: "png", size: 1024}))
-        .addField("Reason:", banReason, true)
-        .setTimestamp()
-        .setFooter("Party!", "https://i.imgur.com/B6QKBgC.png");
-
-        
-
+        if (message.author === kicked) {
+      let sanctionyourselfembed = new Discord.MessageEmbed()
+        .setDescription(`${cross} You cannot kick yourself!`)
+        .setColor("#ff0000");
+      message.channel.send(sanctionyourselfembed);
   
-         await user.kick(banReason)
-          .then(
-            message.channel.send(banEmb))
-              .catch(console.error);
+      return;
+    }
+  
+    if (!reason) {
+      let noreasonembed = new Discord.MessageEmbed()
+        reason = "not specified | kicked by " + message.author.username
+    }
+  
+    if (!message.member.permissions.has("KICK_MEMBERS")) {
+      let nopermsembed = new Discord.MessageEmbed()
+        .setDescription(
+          cross + " You do not have permission `KICK MEMBERS` contact an administrator"
+        )
+        .setColor("ff0000");
+      message.channel.send(nopermsembed);
+  
+      return;
+    }
+  
+    if (!message.guild.me.permissions.has("KICK_MEMBERS")) {
+      let botnopermsembed = new Discord.MessageEmbed()
+        .setDescription(
+          cross + " I do not have `KICK MEMBERS` permission"
+        )
+        .setColor("#ff0000");
+      message.channel.send(botnopermsembed);
+  
+      return;
+    }
+  
+    
+    if(!message.guild.member(kicked.id).bannable){
+      let usermodembed = new Discord.MessageEmbed()
+        .setDescription(
+          cross + " I can't kick a moderator!"
+        )
+        .setColor("#ff0000");
+      message.channel.send(usermodembed);
+  
+      return;
+    }
+
+    
+    
+    message.guild.members.kick(kicked, { reason: reason });
+  
+    let successfullyembed = new Discord.MessageEmbed()
+       .setColor("0xfeb637")
+       .setAuthor("Kicked by " + message.author.username , message.author.displayAvatarURL({type: "png", size: 1024}))
+       .setTitle(`${tick} ${kicked.tag} has been kicked!`)
+       .setThumbnail(kicked.displayAvatarURL({type: "png", size: 1024}))
+       .addField("Reason:", reason, true)
+       .setTimestamp()
+       .setFooter("Party!", "https://i.imgur.com/B6QKBgC.png");
+  
+    message.channel.send(successfullyembed);
+ 
+    
+    
+    
+    
+    
+    
+  const banEmb = new Discord.MessageEmbed()
+       
   }
 };
