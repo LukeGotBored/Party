@@ -2,7 +2,7 @@ const fs = require("fs");
 const Discord = require("discord.js");
 const express = require("./core/express.js");
 const DBL = require("dblapi.js");
-const client = new Discord.Client({ disableMentions: ['everyone', 'here']  });
+const client = new Discord.Client({ disableMentions: 'everyone' });
 const dbl = new DBL(process.env.BOTGG, client);
 const { prefix, status, version } = require("./core/config.json");
 const cooldowns = new Discord.Collection();
@@ -44,10 +44,10 @@ for (const category of commandCategories) {
 
 client.on("ready", () => {
   console.log("Updated! " + time);
-    client.user.setPresence({ 
+  client.user.setPresence({ 
   status: "idle", 
   activity: { 
-  name: "Happy Spooktober! | Party 4.0", 
+  name: "#StaySafe | Party 4.1b", 
   type: "PLAYING" 
   }})
 });
@@ -134,6 +134,20 @@ client.on("message", async message => {
         message.delete();
         return message.reply("<a:p_no:655807081240330245> This command is only for developers!")
      }
+    
+    
+    if (command.votersOnly){
+       if (!(await dbl.hasVoted(message.author.id))){
+         
+       const lockEmbed = new Discord.MessageEmbed()
+        .setColor("0xfeb637")
+        .setTitle("🔒 This command is locked!")
+        .setDescription("You can **unlock** this command by [voting!](https://top.gg/bot/527625435128004628/vote)")
+        .setFooter("Party! | can't vote? try p!vote", "https://i.imgur.com/B6QKBgC.png")
+        .setThumbnail("https://cdn.glitch.com/76b98dfe-b6a5-425a-bd10-be07af6b4014%2Ffinal%20final%20final%20final.gif?v=1601223987756")
+         return message.reply(lockEmbed)
+       }
+    }
 
     command.execute(message, args);
   } catch (error) {
