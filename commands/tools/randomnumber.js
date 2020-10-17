@@ -8,8 +8,8 @@ module.exports = {
   aliases: ["lottery", "extractnumber", "random"],
 
   async execute(message, args) {
-      const tick = message.client.emojis.get("655807079784644608").toString()
-      const cross = message.client.emojis.get("655807081240330245").toString()
+    const tick = message.client.emojis.cache.get("655807079784644608").toString()
+    const cross = message.client.emojis.cache.get("655807081240330245").toString()
       
 
       var min = 0
