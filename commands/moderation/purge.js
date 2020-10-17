@@ -9,7 +9,7 @@ module.exports = {
   execute(message, args) {
     const tick = message.client.emojis.cache.get("655807079784644608").toString()
     const cross = message.client.emojis.cache.get("655807081240330245").toString()
-    const amount = parseInt(args[0]);
+    var amount = parseInt(args[0]);
 
     if (message.member.hasPermission("MANAGE_MESSAGES")) {
       if (isNaN(amount)) {
@@ -26,7 +26,8 @@ module.exports = {
           });
         message.delete();
       }
-
+      
+      amount++  
       message.delete();
       message.channel.bulkDelete(amount, true).catch(err => {
         console.error(err);
@@ -39,7 +40,7 @@ module.exports = {
             msg.delete({timeout: 5000});
           });
       });
-
+      amount = amount - 1
       message.channel
         .send(tick + " Deleted " + amount + " message/s!")
         .then(msg => {
