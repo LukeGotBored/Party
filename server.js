@@ -1,6 +1,7 @@
 const fs = require("fs");
 const Discord = require("discord.js");
-const express = require("./core/express.js");
+const express = require(express);
+const app = express();
 const DBL = require("dblapi.js");
 const client = new Discord.Client({ disableMentions: 'everyone' });
 const dbl = new DBL(process.env.BOTGG, client);
@@ -166,3 +167,13 @@ client.on("message", async message => {
 
 client.login(process.env.DISCORD_BOT_TOKEN)
   .then(console.log("Successfully logged in!"));
+
+
+app.get("/api/stats", function(req, res) {
+   	res.header('Access-Control-Allow-Origin', '*');
+        res.json({"guilds": client.guilds.cache.size, });
+    });
+
+    const listener = app.listen(process.env.PORT, () => {
+      console.log("Your app is listening on port " + listener.address().port);
+    });
