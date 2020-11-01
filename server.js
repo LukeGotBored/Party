@@ -1,6 +1,6 @@
 const fs = require("fs");
 const Discord = require("discord.js");
-const express = require(express);
+const express = require("express");
 const app = express();
 const DBL = require("dblapi.js");
 const client = new Discord.Client({ disableMentions: 'everyone' });
