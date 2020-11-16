@@ -20,7 +20,7 @@
     "is-image": "^3.0.0",
     "brawlstars.js": "^1.0.6",
     "cr.js": "^0.2.2",
-    "mal-scraper": "^2.7.2",
+    "mal-scraper": "^2.11.2",
     "striptags": "^3.1.1",
     "@discordjs/opus": "^0.3.2",
     "canvas": "^2.6.1",
