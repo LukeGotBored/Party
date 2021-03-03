@@ -13,6 +13,7 @@ module.exports = {
     var prediction = "none";
     var fortunes = [
       "As far as I can see, yes.",
+      "As I see it, yes.",
       "It's certain.",
       "It's definitely like that.",
       "Most likely.",
@@ -29,6 +30,7 @@ module.exports = {
       "Very uncertain.",
       "I see it as difficult...",
       "Don't hope too much for it.",
+      "Very doubtful.",
       "Nope"
     ];
     prediction = fortunes[Math.floor(Math.random() * fortunes.length)];
@@ -48,8 +50,8 @@ module.exports = {
     } else {
       predemb = new Discord.MessageEmbed()
         .setColor("0xfeb637")
-        .setTitle(":8ball: Here's the prediction!")
-        .addField(":sparkles: the ball says...", prediction)
+        .setTitle("✨ Here's the prediction!")
+        .addField("🎱 the ball says...", prediction)
         .setTimestamp()
         .setFooter("Party!", "https://i.imgur.com/B6QKBgC.png");
     }
