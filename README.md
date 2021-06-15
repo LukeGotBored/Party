@@ -1,1 +1,36 @@
-Readme is currently being rewritten
+
+# 🎉Party
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)  
+ 
+**Party** is a simple, easy-to-use, Multipurpose bot that has over 100 commands built-in
+
+
+
+## Features
+
+- many random commands to entertain you and your friends
+- a simple to use modular system, that allows anyone to add commands easily
+- a decent permission management system
+## Demo
+
+![](https://i.gyazo.com/8f4d3bf941e8a353eef6c9865f76c5bb.gif)
+
+  
+## Authors
+
+[@lukegotbored](https://www.github.com/lukegotbored) - [@vampymaria](https://github.com/vampymaria) - [@cAttte](https://github.com/cAttte)
+
+  
+## Support
+
+For support, join our [Discord server](https://discord.gg/EPFn2vduDZ), or contact us at support@getparty.ml
+
+
+  
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+
+
+(update soon..?)
