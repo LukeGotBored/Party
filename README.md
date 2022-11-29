@@ -2,7 +2,15 @@
 # 🎉Party
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)  
  
-**Party** is a simple, easy-to-use, Multipurpose bot that has over 100 commands built-in
+  ##
+### **[⚠ IMPORTANT] Project is no longer being mantained**
+Due to personal reasons and lack of interest I've decided to stop the development of Party!
+There **may** be updates in the future (possibly a full rewrite) but as of now I'll archive the repository until further notice.
+Thanks for supporting my small side project for all these years, goodbye 👋
+  ## 
+
+
+### **Party** is a simple, easy-to-use, Multipurpose bot that has over 100 commands built-in
 
 
 
